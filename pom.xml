@@ -7,6 +7,137 @@
     <groupId>com.aainur</groupId>
     <artifactId>vaadintry</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
-    
+    <name>Vaadin Try</name>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.2.RELEASE</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.vaadin.spring.extensions</groupId>
+            <artifactId>vaadin-spring-ext-boot</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.vaadin.spring.addons</groupId>
+            <artifactId>vaadin-spring-addon-eventbus</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.vaadin</groupId>
+            <artifactId>viritin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.vaadin.teemu</groupId>
+            <artifactId>switch</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.4.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.vaadin.spring.extensions</groupId>
+                <artifactId>vaadin-spring-ext-boot</artifactId>
+                <version>2.0.0.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.vaadin.spring.addons</groupId>
+                <artifactId>vaadin-spring-addon-eventbus</artifactId>
+                <version>2.0.0.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-bom</artifactId>
+                <version>${vaadin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.vaadin</groupId>
+                <artifactId>viritin</artifactId>
+                <version>2.8</version>
+            </dependency>
+            <dependency>
+                <groupId>org.vaadin.teemu</groupId>
+                <artifactId>switch</artifactId>
+                <version>3.0.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>vaadintry</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <vaadin.version>8.4.1</vaadin.version>
+        <lombok.version>1.18.0</lombok.version>
+    </properties>
 </project>
